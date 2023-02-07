@@ -16,12 +16,17 @@ spring:
             - Path=/payment/get/** # 路径相匹配的进行路由
             - After=2020-05-26T17:07:03.043+08:00[Asia/Shanghai]
 #            - Cookie=username,wxh
+          filters: # gateway自带过滤器
+            - AddRequestHeader=k,v #AddRequestHeader就是其中一个过滤器名称，k是key,v是value
+            - LogFilter
 
         - id: payment_routh2 # 路由id，没有
 #          uri:  http://localhost:8001 # 匹配后提供服务的路由地址
           uri:  lb://cloud-payment-service
           predicates:
             - Path=/payment/create # 路径相匹配的进行路由
+      default-filters: #对所有路由生效，与routes是同一级别
+        - AddRequestHeader=Truth,No.1 #AddRequestHeader就是其中一个过滤器名称，Truth是key,No.1是value
 
 eureka:
   instance:

@@ -10,6 +10,10 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 import sun.rmi.runtime.Log;
 
+/**
+ *     GatewayFilter - 有31种，作用于制定的routes
+ *     GlobalFilter - 有10种, 作用与全局
+ */
 @Component
 @Slf4j
 public class MyLogFilter implements GlobalFilter, Ordered {
